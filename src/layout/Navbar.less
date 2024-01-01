@@ -1,0 +1,70 @@
+@link-color: #428bca;
+@link-color-hover: darken(@link-color, 10%);
+
+nav.top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1em;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  border: 1px dotted #000000;
+  margin: 0 auto;
+
+  @media (max-width: 412px) {
+    min-width: 100%;
+    font-size: .8em;
+  }
+
+  .clockLogo {
+    margin: 2%;
+    width: 50px;
+
+    @media (max-width: 412px) {
+      min-width: 25px;
+    }
+  }
+}
+
+h1 {
+  @media (max-width: 412px) {
+    font-size: 1.5rem;
+  }
+}
+
+menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1%;
+
+  .navIconsContainer {
+    margin: 0.5em;
+
+    .navIcons {
+      width: 35px;
+      transition: box-shadow 0.3s;
+      border-radius: 10%;
+
+      &:hover {
+        box-shadow: 0 0 12px #3DD1E7;
+        transform: scale(1.05);
+      }
+    }
+
+    @media (max-width: 412px) {
+      width: 35px;
+    }
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.8em;
+  }
+}
