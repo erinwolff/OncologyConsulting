@@ -4,7 +4,7 @@ export default function Navbar() {
   
   return (
     <nav> 
-      <menu>
+      <menu class="navbar">
        About Us | Services | Contact Us
       </menu>
     </nav>
