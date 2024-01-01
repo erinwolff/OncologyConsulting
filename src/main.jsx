@@ -11,6 +11,17 @@ import Contact from './features/Contact.jsx';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import { extendTheme } from '@chakra-ui/react';
+import '@fontsource/pt-sans-caption';
+import '@fontsource/noto-sans';
+
+const theme = extendTheme({
+  fonts: {
+    heading: `'PT Sans Caption', sans-serif`,
+    body: `'Noto Sans', sans-serif`,
+  },
+})
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -26,8 +37,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <RouterProvider router={router} />
     </ChakraProvider>
   </React.StrictMode>
 );
+

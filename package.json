@@ -10,9 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@fontsource-variable/archivo-narrow": "^5.0.19",
+    "@fontsource/barlow": "^5.0.8",
+    "@fontsource/libre-baskerville": "^5.0.8",
+    "@fontsource/montserrat": "^5.0.16",
+    "@fontsource/noto-sans": "^5.0.18",
+    "@fontsource/pt-sans-caption": "^5.0.19",
     "@reduxjs/toolkit": "^2.0.1",
     "framer-motion": "^10.16.16",
     "react": "^18.2.0",
