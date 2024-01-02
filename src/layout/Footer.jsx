@@ -7,7 +7,7 @@ export default function Footer() {
       <Card direction={{ base: 'column', sm: 'row' }} overflow="hidden" variant="filled" p={5}>
         <Flex align="center" justify="space-between" w="100%" flexWrap="wrap">
           <Box display="flex" alignItems="center" mb={{ base: 4, sm: 0 }} justifyContent="center" width="100%">
-            <SimpleGrid spacing={4} templateColumns='repeat(3, 1fr)' justifyContent='center' textAlign="center">
+            <SimpleGrid spacing={4} templateColumns={{ base: '1fr', sm: 'repeat(3, 1fr)' }} minChildWidth={{ base: 'auto', sm: '300px' }} justifyContent='center' textAlign="center">
               <Card>
                 <CardHeader>
                   <Heading size='md'> Location</Heading>
