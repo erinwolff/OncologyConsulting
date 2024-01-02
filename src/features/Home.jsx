@@ -62,13 +62,6 @@ export default function Home() {
           </Text>
         </Stack>
       </Card >
-
-
-      <Text fontSize='md'>12418 138th Ave, WA  Puyallup 98374<br />
-        <Text as='b'>Email</Text>: consulting.oncology@gmail.com<br />
-        <Text as='b'>Phone</Text>: +1 253 250 1037<br />
-      </Text>
-      <Text fontSize='md'>Oncology Consulting Wolff LLC is an American small company solely owned by the founder and structured as Limited Liability Company operating from the Seattle area in Washington State.  The company provides services in person or outsources specific services to other small companies.  Marketing is based on word by mouth, and personal professional network.  Income is services per contract and revenue is invoiced.</Text>
     </>
   );
 }
