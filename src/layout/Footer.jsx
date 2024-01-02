@@ -1,4 +1,4 @@
-import { Box, Card, Flex, Text, SimpleGrid, CardHeader, Heading, CardBody, Link, Button } from '@chakra-ui/react';
+import { Box, Card, Flex, Text, SimpleGrid, CardHeader, Heading, CardBody, Link } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 export default function Footer() {
