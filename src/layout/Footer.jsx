@@ -31,7 +31,7 @@ export default function Footer() {
               </Card>
               <Card>
                 <CardHeader>
-                  <Heading size='md'> View More</Heading>
+                  <Heading size='md'> Quick Links</Heading>
                 </CardHeader>
                 <CardBody>
                   <Link href='https://www.linkedin.com/in/johannes-wolff-md-phd-2a8998106/' isExternal>
