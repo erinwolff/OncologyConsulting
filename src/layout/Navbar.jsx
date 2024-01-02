@@ -1,7 +1,8 @@
-import { Card, Image, Flex, Box, Heading, Button, Spacer } from '@chakra-ui/react'
-import { EmailIcon, InfoIcon, CheckIcon } from '@chakra-ui/icons'
+import { Card, Image, Flex, Box, Heading, Button } from '@chakra-ui/react'
+import { EmailIcon, InfoIcon } from '@chakra-ui/icons'
 import { Link as ReactRouterLink } from 'react-router-dom'
-import { Link as ChakraLink } from '@chakra-ui/react'
+import { Link as ChakraLink, Icon } from '@chakra-ui/react'
+import { LiaHandshake } from "react-icons/lia";
 
 export default function Navbar() {
   return (
@@ -26,19 +27,19 @@ export default function Navbar() {
 
           <Flex align='center' justify={{ base: 'center', sm: 'flex-end' }} flex='1'>
             <ChakraLink as={ReactRouterLink} to='/home'>
-              <Button leftIcon={<InfoIcon />} colorScheme='blue' variant='solid' size='sm' m={1}>
+              <Button leftIcon={<InfoIcon />} colorScheme='blue' variant='solid' size='md' m={1}>
                 About Us
               </Button>
             </ChakraLink>
 
             <ChakraLink as={ReactRouterLink} to='/services'>
-              <Button leftIcon={<CheckIcon />} colorScheme='blue' variant='solid' size='sm' m={1}>
-                Services
+              <Button colorScheme='blue' variant='solid' size='md' m={1}>
+                <Icon as={LiaHandshake} boxSize={6} mr={2}/>Services
               </Button>
             </ChakraLink>
 
             <ChakraLink as={ReactRouterLink} to='/contact'>
-              <Button leftIcon={<EmailIcon />} colorScheme='blue' variant='solid' size='sm' m={1}>
+              <Button leftIcon={<EmailIcon />} colorScheme='blue' variant='solid' size='md' m={1}>
                 Contact Us
               </Button>
             </ChakraLink>
