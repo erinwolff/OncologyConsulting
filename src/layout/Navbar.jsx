@@ -27,19 +27,19 @@ export default function Navbar() {
 
           <Flex align='center' justify={{ base: 'center', sm: 'flex-end' }} flex='1'>
             <ChakraLink as={ReactRouterLink} to='/home'>
-              <Button leftIcon={<InfoIcon />} colorScheme='blue' variant='solid' size='md' m={1}>
+              <Button leftIcon={<InfoIcon />} colorScheme='blue' variant='solid' size='sm' m={1}>
                 About Us
               </Button>
             </ChakraLink>
 
             <ChakraLink as={ReactRouterLink} to='/services'>
-              <Button colorScheme='blue' variant='solid' size='md' m={1}>
+              <Button colorScheme='blue' variant='solid' size='sm' m={1}>
                 <Icon as={LiaHandshake} boxSize={6} mr={2}/>Services
               </Button>
             </ChakraLink>
 
             <ChakraLink as={ReactRouterLink} to='/contact'>
-              <Button leftIcon={<EmailIcon />} colorScheme='blue' variant='solid' size='md' m={1}>
+              <Button leftIcon={<EmailIcon />} colorScheme='blue' variant='solid' size='sm' m={1}>
                 Contact Us
               </Button>
             </ChakraLink>
