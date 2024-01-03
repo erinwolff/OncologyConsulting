@@ -86,7 +86,7 @@ export default function ContactForm() {
               name="message"
               type="text"
               variant="outline"
-              placeholder="Your Enquiry"
+              placeholder="Message"
               w={{ base: '80vw', sm: '500px' }}
             />
             <ValidationError
