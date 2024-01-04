@@ -1,6 +1,6 @@
 import { Heading } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
-import { Card, CardBody, Image, Stack, CardHeader, Flex, Avatar, Box } from '@chakra-ui/react'
+import { Card, CardBody, Image, Stack, Flex  } from '@chakra-ui/react'
 
 export default function Home() {
   return (
