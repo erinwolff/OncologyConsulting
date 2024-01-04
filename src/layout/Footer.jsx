@@ -38,10 +38,6 @@ export default function Footer() {
                     LinkedIn<ExternalLinkIcon mx='2px' />
                   </Link>
                   <br />
-                  <Link href='https://www.doximity.com/profiles/315a804f-665a-40f3-8521-8fb89b4c22ef/edit' isExternal>
-                    Doximity<ExternalLinkIcon mx='2px' />
-                  </Link>
-                  <br />
                   <Link href='https://www.researchgate.net/profile/Johannes-Wolff-2' isExternal>
                     Research Gate<ExternalLinkIcon mx='2px' />
                   </Link>
@@ -57,6 +53,8 @@ export default function Footer() {
               services to other small companies. Marketing is based on word by mouth, and personal
               professional network. Income is services per contract and revenue is invoiced.
             </Text>
+            <br />
+            <Text fontSize="xs" textAlign="center">Website Designed by Erin Wolff</Text>
           </Box>
         </Flex>
       </Card>
