@@ -1,4 +1,4 @@
-import { Tabs, TabList, Tab, TabPanels, TabPanel, Card, Heading, Text, UnorderedList, ListItem, Image, Center } from '@chakra-ui/react'
+import { Tabs, TabList, Tab, TabPanels, TabPanel, Card, Heading, Text, UnorderedList, ListItem, Image, Center } from '@chakra-ui/react';
 
 export default function Services() {
   return (
@@ -6,26 +6,25 @@ export default function Services() {
       <Card direction={{ base: 'column', sm: 'row' }}
         overflow='hidden'
         variant='unstyled'
-        mt={10}
+        mt={{ base: 5, sm: 10 }}
         mx='auto'
         alignContent='center'
         maxW='sm'>
-        <Heading
-          textAlign="center">Explore Our Services</Heading>
+        <Heading textAlign="center">Explore Our Services</Heading>
       </Card>
       <br />
       <Card
-        maxW='60vw'
+        maxW={{ base: '90vw', sm: '60vw' }}
         mx='auto'
         variant='filled'
-        mt={30}
-        mb={30}>
+        mt={{ base: 10, sm: 30 }}
+        mb={{ base: 10, sm: 30 }}>
         <Tabs
           isFitted
           variant='solid-rounded'
           colorScheme='blue'
           defaultIndex={0}>
-          <TabList mb='1em'>
+          <TabList mb={{ base: '0.5em', sm: '1em' }} flexWrap="wrap">
             <Tab>Medical Monitoring</Tab>
             <Tab>Data Review</Tab>
             <Tab>Product-Based</Tab>
@@ -55,7 +54,7 @@ export default function Services() {
                     <br />The customer is a pharmaceutical company conducting or planning a clinical trial.  The customer is a pharmaceutical company conducting a clinical trial, a sponsor in ICH terminology.  They deliver data in Excel. The data structure is one line per patient.  Variables (columns) are previously agreed upon, and typically include prognostic indicators such as tumor stage, previous lines of treatment as well as outcome variables such as best response time on treatment , or event free survival.  The data are typically not cleaned, and not source verified.  Consulting Wolff LLC will review and analyze the data.  The product is a PowerPoint presentation with key findings, and an SPSS print out all analyzes included in the final version.  The finding will include:  Red flags: items that appear unlikely , should result in a query or further explanation before presenting the data outside of the company, an aggregate overview of the observed efficacy (overall response rates, median PFS as applicable), a comparison to the bench mark to TPP  if it exists, and strategic recommendations for further study conduct.</ListItem>
                 </UnorderedList>
               </Text>
-              <br/>
+              <br />
               <Center>
                 <Image alignItems='center' src="/data.png" alt="Data Review" objectFit='cover' maxW='100%' />
               </Center>
@@ -71,7 +70,7 @@ export default function Services() {
                     <br />Based upon the CDP, and existing data, patient numbers based upon a statistical power calculation delivered by the sponsor, and potentially a company protocol template, Oncology Consulting Wolff LLC will deliver a first draft for a protocol.  Thereafter a company review is supported, comments are included, and a second draft is created.</ListItem>
                 </UnorderedList>
               </Text>
-              <br/>
+              <br />
               <Center>
                 <Image alignItems='center' src="/development_plan.jpg" alt="Development Plan" objectFit='cover' maxW='70%' />
               </Center>
@@ -79,7 +78,7 @@ export default function Services() {
             <TabPanel>
               <Text>These services are very flexible and dependent on the status of the drug development.  They may include developing the medical components of the IND, CDP, NDA, or launch.  Data review, competitive intelligence may be a part of the preparation work.  Internal or external presentations may be part of the deliverables.
               </Text>
-              <br/>
+              <br />
               <Center>
                 <Image alignItems='center' src="/consulting.jpg" alt="Consulting" objectFit='cover' maxW='70%' />
               </Center>
@@ -94,7 +93,7 @@ export default function Services() {
                   <ListItem>Coaching of senior employees, focusing on senior medical doctors switching to the industry on senior levels will be provided as a structured process over a predetermined time period.  This may include an initial assessment of issues that may have occurred, personal meetings, a coaching plan, scheduled one on one video conference basis, and out of schedule point of contact support, a midterm coaching assessment, and a final project conclusion.</ListItem>
                 </UnorderedList>
               </Text>
-              <br/>
+              <br />
               <Center>
                 <Image alignItems='center' src="/coaching.jpg" alt="Coaching" objectFit='cover' maxW='80%' />
               </Center>
