@@ -14,7 +14,7 @@ export default function Services() {
       </Card>
       <br />
       <Card
-        maxW={{ base: '90vw', sm: '60vw' }}
+        maxW={{ base: '100vw', lg: '90vw' }}
         mx='auto'
         variant='filled'
         mt={{ base: 10, sm: 30 }}
