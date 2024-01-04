@@ -7,7 +7,7 @@ export default function Contact() {
       <Text
         fontSize="2xl"
         textAlign="center"
-        pt="10vh">
+        pt="5vh">
         For questions or more information, 
         <br/>please reach out to <Text as="a" href="mailto:johannes@wolffoncology.com" textDecor="underline">johannes@wolffoncology.com </Text> 
         <br/>or submit a message below.
