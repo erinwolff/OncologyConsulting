@@ -1,9 +1,16 @@
-# React + Vite
+![image](https://github.com/erinwolff/OncologyConsulting/assets/57080166/bb28142c-17b5-4257-9469-5e4e33c15ddd)
+# Oncology Consulting Website
+## Overview
+This repository contains the source code for the Oncology Consulting website. The website is built using React and leverages Vite for development and build processes.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Dependencies
 
-Currently, two official plugins are available:
+- **React:** A JavaScript library for building user interfaces.
+- **Chakra UI:** Styling components with ease.
+- **Fontsource:** Various fonts for a polished look.
+- **Formspree:** Handling forms on the website.
+- **React Router:** Navigation for React app.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# OncologyConsulting
+
+
+
