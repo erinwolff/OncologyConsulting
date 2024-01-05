@@ -6,7 +6,7 @@ import { LiaMailBulkSolid, LiaPhoneSolid, LiaUser } from "react-icons/lia";
 export default function ContactForm() {
   const [state, handleSubmit] = useForm("myyryjlg");
   if (state.succeeded) {
-    return <Text fontSize="xl" textAlign="center" p={10}>Thank you for your message!</Text>;
+    return <Text fontSize="xl" textAlign="center" pt={10} pb="38vh">Thank you for your message!</Text>;
   }
   return (
     <Flex direction="column" align="center" minH="48vh">
