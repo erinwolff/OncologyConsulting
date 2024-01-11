@@ -13,8 +13,7 @@ export default function Footer() {
                   <Heading size='md'> Location</Heading>
                 </CardHeader>
                 <CardBody>
-                  <Text as="a" href="https://maps.app.goo.gl/38p8WZ4RagoaWEDF8" target="_blank" rel="noopener noreferrer">12418 138th Avenue <br />
-                    Puyallup, WA 98374
+                  <Text>Puyallup, WA 98374
                   </Text>
                 </CardBody>
               </Card>
@@ -41,20 +40,17 @@ export default function Footer() {
                   <Link href='https://www.researchgate.net/profile/Johannes-Wolff-2' isExternal>
                     Research Gate<ExternalLinkIcon mx='2px' />
                   </Link>
+                  <br />
+                  <Link href='https://pubmed.ncbi.nlm.nih.gov/?term=wolff+JE%5Bau%5D' isExternal>
+                    PubMed<ExternalLinkIcon mx='2px' />
+                  </Link>
                 </CardBody>
               </Card>
             </SimpleGrid>
           </Box>
-          <Box mt={4} width="100%">
-            <Text fontSize="sm" textAlign="center">
-              Oncology Consulting Wolff LLC is an American small company solely owned by the founder
-              and structured as Limited Liability Company operating from the Seattle area in
-              Washington State. The company provides services in person or outsources specific
-              services to other small companies. Marketing is based on word by mouth, and personal
-              professional network. Income is services per contract and revenue is invoiced.
+          <Box mt={4} width="100%" textAlign="center">
+            <Text as="a" href="https://www.linkedin.com/in/erinmwolff/" target="_blank" rel="noopener noreferrer" fontSize="xs">Website Designed by Erin Wolff
             </Text>
-            <br />
-            <Text fontSize="xs" textAlign="center">Website Designed by Erin Wolff</Text>
           </Box>
         </Flex>
       </Card>
