@@ -11,7 +11,7 @@ export default function Services() {
         mx='auto'
         alignContent='center'
         maxW='sm'>
-        <Heading textAlign="center">Our Services</Heading>
+        <Heading textAlign="center" mx="auto">Our Services</Heading>
       </Card>
       <br />
       <Card
