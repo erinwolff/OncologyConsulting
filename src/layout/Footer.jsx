@@ -24,7 +24,7 @@ export default function Footer() {
                 <CardBody>
                   <Text fontSize="md">
                     <Text as="b">Email</Text>: <Text as="a" href="mailto:johannes@wolffoncology.com" textDecor="underline">johannes@wolffoncology.com </Text><br />
-                    <Text as="b">Phone</Text>: +1 253 250 1037<br />
+                    <Text as="b">Phone</Text>: <Link href="tel:+12532501037">+1 (253) 250-1037</Link><br />
                   </Text>
                 </CardBody>
               </Card>
