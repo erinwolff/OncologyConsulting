@@ -1,4 +1,4 @@
-import { Tabs, TabList, Tab, TabPanels, TabPanel, Card, Heading, Text, UnorderedList, ListItem, Image, Center } from '@chakra-ui/react';
+import { Tabs, TabList, Tab, TabPanels, TabPanel, Card, Heading, Text, UnorderedList, ListItem, Image, Center, Flex } from '@chakra-ui/react';
 
 
 export default function Services() {
@@ -34,26 +34,27 @@ export default function Services() {
           </TabList>
           <TabPanels>
             <TabPanel>
-              <Center>
-                <UnorderedList spacing={3}>
-                  <ListItem>Protocol writing </ListItem>
-                  <ListItem>Site selection </ListItem>
-                  <ListItem>Site Initiation Visits </ListItem>
-                  <ListItem>Investigator relation management </ListItem>
-                  <ListItem>Patient eligibility </ListItem>
-                  <ListItem>Causality assessment of Adverse Events </ListItem>
-                  <ListItem>Aggregate data review </ListItem>
-                  <ListItem>Publications </ListItem>
-                  <ListItem>And others </ListItem>
-                </UnorderedList>
-              </Center>
-              <br />
-              <Text marginLeft="10vw" marginRight="10vw" textAlign="left">The service is typically structured similarly to the Job description of an employed senior medical director in the pharmaceutical industry. It includes all medical functions from protocol development over study conduct to result reporting. Core specific items may include site initiation visits, checking eligibility criteria of potential patients to be enrolled, review of safety events, investigator meetings, and review of aggregate data. The consultant is embedded in the study team and provides medical advice to Clinical Operation team, Biometrics, Biomarkers, and other functions. Safety monitoring functions such as 24 hour medical coverage, adverse event causality assessment, CIOMs narratives, aggregate data review, or safety work ups may or may not be included. Safety operation such as SUSAR reporting is not offered at this point in time. The service is typically compensated on hourly basis.
+              <Text textAlign="left">The service is typically structured similarly to the Job description of an employed senior medical director in the pharmaceutical industry. It includes all medical functions from protocol development over study conduct to result reporting. Core specific items may include site initiation visits, checking eligibility criteria of potential patients to be enrolled, review of safety events, investigator meetings, and review of aggregate data. The consultant is embedded in the study team and provides medical advice to Clinical Operation team, Biometrics, Biomarkers, and other functions. Safety monitoring functions such as 24 hour medical coverage, adverse event causality assessment, CIOMs narratives, aggregate data review, or safety work ups may or may not be included. Safety operation such as SUSAR reporting is not offered at this point in time. The service is typically compensated on hourly basis.
               </Text>
               <br />
-              <Center>
-                <Image alignItems='center' src="/medical_monitoring.jpg" alt="Medical Monitoring" objectFit='cover' maxW='100%' />
-              </Center>
+              <Flex justifyContent="center" mx="auto" flexDirection={{ base: 'column', md: 'row' }}>
+                <Center>
+                  <UnorderedList spacing={3} marginRight={5} marginBottom={10}>
+                    <ListItem>Protocol Writing </ListItem>
+                    <ListItem>Site Selection </ListItem>
+                    <ListItem>Site Initiation Visits </ListItem>
+                    <ListItem>Investigator Relation Management </ListItem>
+                    <ListItem>Patient Eligibility </ListItem>
+                    <ListItem>Causality Assessment of Adverse Events </ListItem>
+                    <ListItem>Aggregate Data Review </ListItem>
+                    <ListItem>Publications </ListItem>
+                    <ListItem>And others </ListItem>
+                  </UnorderedList>
+                </Center>
+                <Center>
+                  <Image alignItems='center' src="/medical_monitoring.jpg" alt="Medical Monitoring" objectFit='cover' maxW='100%' />
+                </Center>
+              </Flex>
             </TabPanel>
             <TabPanel>
               <Text>These are services combining Medical expertise with basic statistics in various degrees:</Text>
@@ -102,19 +103,19 @@ export default function Services() {
             <TabPanel>
               <UnorderedList>
                 <ListItem><Text><Text as="b">Didactic lectures</Text> for specific oncology indications, response definitions, drug classes, clinical trial best practice, and basics in biostatistics will be provided specifically tailored to the customers needs.</Text></ListItem>
+                <br />
+                <ListItem><Text><Text as="b">Mentoring</Text> of junior employees, in particular medical and safety directors will be provided on scheduled one on one video conference basis, as well as providing resources, and out of schedule point of contact support.</Text></ListItem>
+                <br />
+                <ListItem><Text><Text as="b">Coaching</Text> of senior employees, focusing on medical doctors switching to the industry on senior levels will be provided as a structured process over a predetermined time period.  This may include an initial assessment of issues that may have occurred, personal meetings, a coaching plan, scheduled one on one video conference basis, and out of schedule point of contact support, a midterm coaching assessment, and a final project conclusion.</Text></ListItem>
+              </UnorderedList>
               <br />
-              <ListItem><Text><Text as="b">Mentoring</Text> of junior employees, in particular medical and safety directors will be provided on scheduled one on one video conference basis, as well as providing resources, and out of schedule point of contact support.</Text></ListItem>
-              <br />
-              <ListItem><Text><Text as="b">Coaching</Text> of senior employees, focusing on medical doctors switching to the industry on senior levels will be provided as a structured process over a predetermined time period.  This may include an initial assessment of issues that may have occurred, personal meetings, a coaching plan, scheduled one on one video conference basis, and out of schedule point of contact support, a midterm coaching assessment, and a final project conclusion.</Text></ListItem>
-            </UnorderedList>
-            <br />
-            <Center>
-              <Image alignItems='center' src="/coaching.jpg" alt="Coaching" objectFit='cover' maxW='80%' />
-            </Center>
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
-    </Card >
+              <Center>
+                <Image alignItems='center' src="/coaching.jpg" alt="Coaching" objectFit='cover' maxW='80%' />
+              </Center>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
+      </Card >
     </>
   )
 }
