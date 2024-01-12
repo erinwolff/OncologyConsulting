@@ -1,6 +1,6 @@
 import { Heading } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
-import { Card, CardBody, Image, Stack, Flex  } from '@chakra-ui/react'
+import { Card, CardBody, Image, Stack, Flex } from '@chakra-ui/react'
 
 export default function Home() {
   return (
@@ -47,7 +47,7 @@ export default function Home() {
         <Flex
           direction={{ base: 'column', lg: 'row' }}
           align='center'
-          justify='center'
+          justify={{ base: 'center', lg: 'center' }}
         >
           <Image
             objectFit='cover'
@@ -55,7 +55,7 @@ export default function Home() {
             src='/johannes.jpg'
             alt='Johannes Wolff'
           />
-          <Stack spacing='3' mt={{ base: 5, sm: 0 }} ml={{ sm: 4 }}>
+          <Stack spacing='3' mt={{ base: 5, sm: 0 }} ml={{ sm: 4 }} textAlign={{ base: 'center', lg: 'left' }}>
             <Heading size='xl'>Johannes Wolff</Heading>
             <Text fontSize='2xl'>Founder and CMO</Text>
             <Text>
