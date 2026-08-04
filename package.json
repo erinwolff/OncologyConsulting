@@ -34,7 +34,5 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "vite": "^8.0.3"
   },
-  "overrides": {
-    "react-router": "^7.18.2"
-  }
+  "overrides": {}
 }
