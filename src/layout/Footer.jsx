@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import { COMPANY, EMAIL, LOCATION, PHONE_DISPLAY, PHONE_HREF, PROFILE_LINKS, SPREADSHEET } from '../site';
 import { DownloadIcon, ExternalIcon } from '../components/Icons';
 
@@ -40,8 +41,11 @@ export default function Footer() {
               </li>
             ))}
             <li>
+              <Link to={SPREADSHEET.page}>{SPREADSHEET.title}</Link>
+            </li>
+            <li>
               <a href={SPREADSHEET.href} download>
-                {SPREADSHEET.title}
+                Download spreadsheet
                 <DownloadIcon size={14} />
               </a>
             </li>

@@ -18,7 +18,7 @@ npm run build    # production build in dist/
 | What | Where |
 | --- | --- |
 | Email, phone, location, profile links, spreadsheet download | `src/site.js` |
-| Page content | `src/features/` (`Home.jsx`, `Services.jsx`) |
+| Page content | `src/features/` (`Home.jsx`, `Services.jsx`, `pharmacologist/`) |
 | Header and footer | `src/layout/` |
 | All styling (colors and fonts at the top) | `src/index.css` |
 | Images | `public/images/` (WebP, resized for the web) |
@@ -28,6 +28,12 @@ npm run build    # production build in dist/
 ### Updating the spreadsheet
 
 The Little Pharmacologist lives at `public/downloads/little-pharmacologist.xlsx`. To publish a new version, replace that file. If the filename, size or description changes, update `SPREADSHEET` in `src/site.js`.
+
+### The Little Pharmacologist (interactive model)
+
+`/pharmacologist` is a browser version of Johannes Wolff's spreadsheet model. The calculation lives in `src/features/pharmacologist/model.js`, and each step names the spreadsheet column it reproduces. It was checked against the spreadsheet (Excel's saved results plus LibreOffice recalculations with four other input sets): every time step matches to within 1e-13.
+
+If the spreadsheet's formulas change, `model.js` needs the same change. Input labels, units, limits and help text are in `fields.js`; the explanatory text is in `ModelNotes.jsx`.
 
 ### Security headers
 

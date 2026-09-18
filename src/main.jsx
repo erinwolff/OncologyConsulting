@@ -11,6 +11,7 @@ import Root from './layout/Root.jsx';
 import Home from './features/Home.jsx';
 import Services from './features/Services.jsx';
 import NotFound from './features/NotFound.jsx';
+import Pharmacologist from './features/pharmacologist/Pharmacologist.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       // Keep old /home links working.
       { path: 'home', element: <Navigate to="/" replace /> },
       { path: 'services', element: <Services /> },
+      { path: 'pharmacologist', element: <Pharmacologist /> },
       // The contact page was retired; send old links home.
       { path: 'contact', element: <Navigate to="/" replace /> },
       { path: '*', element: <NotFound /> },

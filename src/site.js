@@ -16,7 +16,8 @@ export const PROFILE_LINKS = [
 export const SPREADSHEET = {
   title: 'The Little Pharmacologist',
   description:
-    'An educational interactive model simulating and visualizing blood concentrations of drugs and biomarkers over time. Enter the variables in the yellow fields and see how concentrations in blood change.',
+    'An educational interactive model simulating and visualizing blood concentrations of drugs and biomarkers over time. Enter the variables and see how concentrations in blood change.',
   href: '/downloads/little-pharmacologist.xlsx',
+  page: '/pharmacologist',
   fileLabel: 'Excel spreadsheet (.xlsx), 1.4 MB',
 };

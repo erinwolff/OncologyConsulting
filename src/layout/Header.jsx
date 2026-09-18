@@ -6,6 +6,7 @@ import { CloseIcon, MenuIcon } from '../components/Icons';
 const NAV = [
   { to: '/', label: 'About Us', end: true },
   { to: '/services', label: 'Services' },
+  { to: '/pharmacologist', label: 'Little Pharmacologist' },
 ];
 
 export default function Header() {
