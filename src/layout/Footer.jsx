@@ -1,59 +1,60 @@
-import { Box, Card, Flex, Text, SimpleGrid, CardHeader, Heading, CardBody, Link } from '@chakra-ui/react';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { COMPANY, EMAIL, LOCATION, PHONE_DISPLAY, PHONE_HREF, PROFILE_LINKS, SPREADSHEET } from '../site';
+import { DownloadIcon, ExternalIcon } from '../components/Icons';
 
 export default function Footer() {
   return (
-    <Box as="footer" w="100%" zIndex="1000" mt="auto" pt={5}>
-      <Card direction={{ base: 'column', sm: 'row' }} overflow="hidden" variant="filled" p={5}>
-        <Flex align="center" justify="space-between" w="100%" flexWrap="wrap">
-          <Box display="flex" alignItems="center" mb={{ base: 4, sm: 0 }} justifyContent="center" width="100%">
-            <SimpleGrid spacing={4} templateColumns={{ base: '1fr', sm: 'repeat(3, 1fr)' }} minChildWidth={{ base: 'auto', sm: '300px' }} justifyContent='center' textAlign="center">
-              <Card>
-                <CardHeader>
-                  <Heading size='md'> Location</Heading>
-                </CardHeader>
-                <CardBody>
-                  <Text>Puyallup, WA 98374
-                  </Text>
-                </CardBody>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <Heading size='md'> Contact</Heading>
-                </CardHeader>
-                <CardBody>
-                  <Text fontSize="md">
-                    <Text as="b">Email</Text>: <Text as="a" href="mailto:johannes@wolffoncology.com" textDecor="underline">johannes@wolffoncology.com </Text><br />
-                    <Text as="b">Phone</Text>: <Link href="tel:+12532501037">+1 (253) 250-1037</Link><br />
-                  </Text>
-                </CardBody>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <Heading size='md'> Quick Links</Heading>
-                </CardHeader>
-                <CardBody>
-                  <Link href='https://www.linkedin.com/in/johannes-wolff-md-phd-2a8998106/' isExternal>
-                    LinkedIn<ExternalLinkIcon mx='2px' />
-                  </Link>
-                  <br />
-                  <Link href='https://www.researchgate.net/profile/Johannes-Wolff-2' isExternal>
-                    Research Gate<ExternalLinkIcon mx='2px' />
-                  </Link>
-                  <br />
-                  <Link href='https://pubmed.ncbi.nlm.nih.gov/?term=wolff+JE%5Bau%5D' isExternal>
-                    PubMed<ExternalLinkIcon mx='2px' />
-                  </Link>
-                </CardBody>
-              </Card>
-            </SimpleGrid>
-          </Box>
-          <Box mt={4} width="100%" textAlign="center">
-            <Text as="a" href="https://www.linkedin.com/in/erinmwolff/" target="_blank" rel="noopener noreferrer" fontSize="xs">Website Designed by Erin Wolff
-            </Text>
-          </Box>
-        </Flex>
-      </Card>
-    </Box>
+    <footer className="site-footer">
+      <div className="container site-footer__grid">
+        <div className="site-footer__brand">
+          <img src="/logo_favicon.png" alt="" width="40" height="38" />
+          <span>{COMPANY}</span>
+        </div>
+
+        <section aria-labelledby="footer-location">
+          <h2 id="footer-location">Location</h2>
+          <p>{LOCATION}</p>
+        </section>
+
+        <section aria-labelledby="footer-contact">
+          <h2 id="footer-contact">Contact</h2>
+          <p>
+            <span className="label">Email</span>
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          </p>
+          <p>
+            <span className="label">Phone</span>
+            <a href={PHONE_HREF}>{PHONE_DISPLAY}</a>
+          </p>
+        </section>
+
+        <section aria-labelledby="footer-links">
+          <h2 id="footer-links">Quick Links</h2>
+          <ul>
+            {PROFILE_LINKS.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} target="_blank" rel="noopener noreferrer">
+                  {link.label}
+                  <ExternalIcon />
+                  <span className="visually-hidden"> (opens in a new tab)</span>
+                </a>
+              </li>
+            ))}
+            <li>
+              <a href={SPREADSHEET.href} download>
+                {SPREADSHEET.title}
+                <DownloadIcon size={14} />
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <div className="container site-footer__bottom">
+        <span>© {new Date().getFullYear()} {COMPANY}</span>
+        <a href="https://www.linkedin.com/in/erinmwolff/" target="_blank" rel="noopener noreferrer">
+          Website Designed by Erin Wolff
+        </a>
+      </div>
+    </footer>
   );
 }
