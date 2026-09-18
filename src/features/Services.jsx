@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { COMPANY, SITE_URL } from '../site';
-import DownloadCard from '../components/DownloadCard';
 
 function Figure({ src, alt, width, height, narrow }) {
   return (
@@ -189,13 +188,6 @@ export default function Services() {
               {s.content}
             </div>
           ))}
-        </div>
-      </section>
-
-      <section className="section section--band" aria-labelledby="resources-heading">
-        <div className="container">
-          <h2 id="resources-heading" className="eyebrow">Resources</h2>
-          <DownloadCard />
         </div>
       </section>
     </>

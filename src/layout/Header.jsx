@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
-import { COMPANY } from '../site';
+import { COMPANY, EMAIL } from '../site';
 import { CloseIcon, MenuIcon } from '../components/Icons';
 
 const NAV = [
   { to: '/', label: 'About Us', end: true },
   { to: '/services', label: 'Services' },
-  { to: '/contact', label: 'Contact Us' },
 ];
 
 export default function Header() {
@@ -53,6 +52,9 @@ export default function Header() {
                 <NavLink to={item.to} end={item.end}>{item.label}</NavLink>
               </li>
             ))}
+            <li>
+              <a className="site-nav__cta" href={`mailto:${EMAIL}`}>Contact Us</a>
+            </li>
           </ul>
         </nav>
       </div>

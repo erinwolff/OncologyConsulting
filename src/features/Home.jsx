@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
-import { COMPANY, SITE_URL } from '../site';
-import { ArrowIcon } from '../components/Icons';
+import { COMPANY, EMAIL, SITE_URL } from '../site';
+import { ArrowIcon, MailIcon } from '../components/Icons';
+import DownloadCard from '../components/DownloadCard';
 
 export default function Home() {
   return (
@@ -50,11 +51,18 @@ export default function Home() {
               <Link className="btn btn--primary" to="/services">
                 Services <ArrowIcon />
               </Link>
-              <Link className="btn btn--secondary" to="/contact">
-                Contact Us
-              </Link>
+              <a className="btn btn--secondary" href={`mailto:${EMAIL}`}>
+                <MailIcon size={18} /> {EMAIL}
+              </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section section--band" aria-labelledby="resources-heading">
+        <div className="container">
+          <h2 id="resources-heading" className="eyebrow">Resources</h2>
+          <DownloadCard />
         </div>
       </section>
     </>

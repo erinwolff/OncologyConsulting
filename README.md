@@ -18,7 +18,7 @@ npm run build    # production build in dist/
 | What | Where |
 | --- | --- |
 | Email, phone, location, profile links, spreadsheet download | `src/site.js` |
-| Page content | `src/features/` (`Home.jsx`, `Services.jsx`, `Contact.jsx`) |
+| Page content | `src/features/` (`Home.jsx`, `Services.jsx`) |
 | Header and footer | `src/layout/` |
 | All styling (colors and fonts at the top) | `src/index.css` |
 | Images | `public/images/` (WebP, resized for the web) |
@@ -27,14 +27,13 @@ npm run build    # production build in dist/
 
 ### Updating the spreadsheet
 
-Replace `public/downloads/wolff-oncology-spreadsheet.xlsx` with the real file. If the filename or description changes, update `SPREADSHEET` in `src/site.js`.
+The Little Pharmacologist lives at `public/downloads/little-pharmacologist.xlsx`. To publish a new version, replace that file. If the filename, size or description changes, update `SPREADSHEET` in `src/site.js`.
 
 ### Security headers
 
-`netlify.toml` sets a strict Content-Security-Policy. If you add a third-party service (analytics, an embedded video, a new form provider, etc.), add its domain to the matching CSP directive or the browser will block it.
+`netlify.toml` sets a strict Content-Security-Policy. If you add a third-party service (analytics, an embedded video, a contact form service, etc.), add its domain to the matching CSP directive or the browser will block it.
 
 ## Dependencies
 
 - **React** and **React Router**
 - **Fontsource** for self-hosted fonts (Source Serif 4 and Source Sans 3)
-- Contact form submissions go to **Formspree** (no client library)

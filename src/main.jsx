@@ -10,7 +10,6 @@ import './index.css';
 import Root from './layout/Root.jsx';
 import Home from './features/Home.jsx';
 import Services from './features/Services.jsx';
-import Contact from './features/Contact.jsx';
 import NotFound from './features/NotFound.jsx';
 
 const router = createBrowserRouter([
@@ -22,7 +21,8 @@ const router = createBrowserRouter([
       // Keep old /home links working.
       { path: 'home', element: <Navigate to="/" replace /> },
       { path: 'services', element: <Services /> },
-      { path: 'contact', element: <Contact /> },
+      // The contact page was retired; send old links home.
+      { path: 'contact', element: <Navigate to="/" replace /> },
       { path: '*', element: <NotFound /> },
     ],
   },
