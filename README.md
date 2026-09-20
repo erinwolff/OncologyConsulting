@@ -35,6 +35,10 @@ The Little Pharmacologist lives at `public/downloads/little-pharmacologist.xlsx`
 
 If the spreadsheet's formulas change, `model.js` needs the same change. Input labels, units, limits and help text are in `fields.js`; the explanatory text is in `ModelNotes.jsx`.
 
+The page defaults match the published (protected) workbook. Two rules keep the model out of states the spreadsheet warns about: the time increment is a menu of exact fractions of tmax, and the three drug concentration limits must stay in order (an entry that breaks the order is refused with an explanation instead of accepted).
+
+The downloaded file in `public/downloads/` is the protected workbook, which is what should be shared.
+
 ### Security headers
 
 `netlify.toml` sets a strict Content-Security-Policy. If you add a third-party service (analytics, an embedded video, a contact form service, etc.), add its domain to the matching CSP directive or the browser will block it.

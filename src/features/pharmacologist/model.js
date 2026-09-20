@@ -13,7 +13,7 @@ export const DEFAULTS = {
   dose: 10,
   dosesPerDay: 3,
   cmax: 100,
-  tmax: 0.3,
+  tmax: 0.5,
   halfLife: 2,
   increment: 0.1,
   // PD inputs (spreadsheet D34–D40)

@@ -2,7 +2,7 @@ import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { formatNumber, niceTicks } from './format';
 
 const HEIGHT = 230;
-const M = { top: 14, right: 14, bottom: 34, left: 52 };
+const BASE_M = { top: 14, right: 14, bottom: 34, left: 52 };
 
 function useWidth() {
   const ref = useRef(null);
@@ -31,21 +31,34 @@ function nearestIndex(xs, x) {
   return Math.abs(xs[lo] - x) <= Math.abs(xs[hi] - x) ? lo : hi;
 }
 
+function axisTop(items, refLines, xs, x1) {
+  let max = 0;
+  for (const s of items) {
+    for (let i = 0; i < xs.length; i++) {
+      if (xs[i] > x1 + 1e-9) break;
+      if (Number.isFinite(s.ys[i])) max = Math.max(max, s.ys[i]);
+    }
+  }
+  for (const r of refLines) if (Number.isFinite(r.y)) max = Math.max(max, r.y);
+  return max || 1;
+}
+
 /**
- * A single-series line chart. `hover` / `onHover` hold the highlighted index,
- * so two charts that share x values can share one crosshair.
+ * A line chart with one or two series. Two series may share the chart with a
+ * second (right-hand) scale — the units differ, so the legend names which side
+ * each series is read against.
+ *
+ * `hover` / `onHover` hold the highlighted index, so charts that share x values
+ * can share one crosshair.
  */
 export default function LineChart({
   label,
   xs,
-  ys,
-  tone,
+  series,
   xDomain,
   xTicks,
   xFormat = formatNumber,
   xName,
-  yName,
-  yUnit,
   band,
   refLines = [],
   markers = [],
@@ -55,36 +68,39 @@ export default function LineChart({
   keyStep = 1,
 }) {
   const [wrapRef, width] = useWidth();
+  const right = series.filter((s) => s.axis === 'right');
+  const left = series.filter((s) => s.axis !== 'right');
+  const M = { ...BASE_M, right: right.length ? 52 : BASE_M.right };
   const innerW = width - M.left - M.right;
   const innerH = HEIGHT - M.top - M.bottom;
-
   const [x0, x1] = xDomain;
-  const yMax = useMemo(() => {
-    let max = 0;
-    for (let i = 0; i < xs.length; i++) if (xs[i] <= x1 && Number.isFinite(ys[i])) max = Math.max(max, ys[i]);
-    for (const r of refLines) if (Number.isFinite(r.y)) max = Math.max(max, r.y);
-    return max || 1;
-  }, [xs, ys, x1, refLines]);
-  const yTicks = niceTicks(0, yMax * 1.05, 5);
-  const yTop = yTicks[yTicks.length - 1];
+
+  const leftRefs = refLines.filter((r) => r.axis !== 'right');
+  const rightRefs = refLines.filter((r) => r.axis === 'right');
+  const leftTicks = niceTicks(0, axisTop(left, leftRefs, xs, x1) * 1.05, 5);
+  const rightTicks = right.length ? niceTicks(0, axisTop(right, rightRefs, xs, x1) * 1.05, 5) : [];
+  const leftTop = leftTicks[leftTicks.length - 1];
+  const rightTop = rightTicks[rightTicks.length - 1];
 
   const sx = (x) => M.left + ((x - x0) / (x1 - x0)) * innerW;
-  const sy = (y) => M.top + innerH - (y / yTop) * innerH;
+  const sy = (y, axis) => M.top + innerH - (y / (axis === 'right' ? rightTop : leftTop)) * innerH;
 
-  const path = useMemo(() => {
+  // Plain computation: the React Compiler memoizes this for us.
+  const paths = series.map((s) => {
+    const top = s.axis === 'right' ? rightTop : leftTop;
     let d = '';
     let pen = false;
     for (let i = 0; i < xs.length; i++) {
       if (xs[i] > x1 + 1e-9) break;
-      const y = ys[i];
+      const y = s.ys[i];
       if (!Number.isFinite(y)) { pen = false; continue; }
-      const px = (M.left + ((xs[i] - x0) / (x1 - x0)) * innerW).toFixed(1);
-      const py = (M.top + innerH - (y / yTop) * innerH).toFixed(1);
+      const px = (BASE_M.left + ((xs[i] - x0) / (x1 - x0)) * innerW).toFixed(1);
+      const py = (BASE_M.top + innerH - (y / top) * innerH).toFixed(1);
       d += `${pen ? 'L' : 'M'}${px},${py}`;
       pen = true;
     }
     return d;
-  }, [xs, ys, x0, x1, innerW, innerH, yTop]);
+  });
 
   const lastIndex = useMemo(() => {
     let i = xs.length - 1;
@@ -123,32 +139,53 @@ export default function LineChart({
       onKeyDown={handleKey}
       onBlur={() => onHover(null)}
     >
+      {series.length > 1 && (
+        <ul className="chart__legend">
+          {series.map((s) => (
+            <li key={s.name}>
+              <span className={`chart__key chart__key--${s.tone}`} aria-hidden="true" />
+              {s.name} ({s.unit}, {s.axis === 'right' ? 'right' : 'left'} scale)
+            </li>
+          ))}
+        </ul>
+      )}
+
       <svg width={width} height={HEIGHT} viewBox={`0 0 ${width} ${HEIGHT}`} role="img" aria-label={label}>
-        {yTicks.map((t) => (
+        {leftTicks.map((t) => (
           <g key={`y${t}`}>
             <line className="chart__grid" x1={M.left} x2={width - M.right} y1={sy(t)} y2={sy(t)} />
             <text className="chart__tick" x={M.left - 8} y={sy(t)} dy="0.32em" textAnchor="end">{formatNumber(t)}</text>
           </g>
         ))}
+        {rightTicks.map((t) => (
+          <text key={`r${t}`} className="chart__tick" x={width - M.right + 8} y={sy(t, 'right')} dy="0.32em">{formatNumber(t)}</text>
+        ))}
 
-        {band && Number.isFinite(band.y0) && Number.isFinite(band.y1) && band.y0 < yTop && (
+        {band && Number.isFinite(band.y0) && Number.isFinite(band.y1) && band.y0 < leftTop && (
           <g>
             <rect
               className="chart__band"
               x={M.left}
               width={innerW}
-              y={sy(Math.min(band.y1, yTop))}
-              height={Math.max(0, sy(Math.max(0, band.y0)) - sy(Math.min(band.y1, yTop)))}
+              y={sy(Math.min(band.y1, leftTop))}
+              height={Math.max(0, sy(Math.max(0, band.y0)) - sy(Math.min(band.y1, leftTop)))}
             />
-            <text className="chart__note" x={width - M.right - 6} y={sy(Math.min(band.y1, yTop)) + 14} textAnchor="end">{band.label}</text>
+            <text className="chart__note" x={width - M.right - 6} y={sy(Math.min(band.y1, leftTop)) + 14} textAnchor="end">{band.label}</text>
           </g>
         )}
 
         {refLines.filter((r) => Number.isFinite(r.y)).map((r) => (
           <g key={r.label}>
-            <line className="chart__ref" x1={M.left} x2={width - M.right} y1={sy(r.y)} y2={sy(r.y)} />
+            <line className="chart__ref" x1={M.left} x2={width - M.right} y1={sy(r.y, r.axis)} y2={sy(r.y, r.axis)} />
             {/* Label sits above its line, unless the line is at the top of the plot. */}
-            <text className="chart__note" x={width - M.right - 6} y={sy(r.y) + (sy(r.y) - M.top < 16 ? 14 : -6)} textAnchor="end">{r.label}</text>
+            <text
+              className="chart__note"
+              x={width - M.right - 6}
+              y={sy(r.y, r.axis) + (sy(r.y, r.axis) - M.top < 16 ? 14 : -6)}
+              textAnchor="end"
+            >
+              {r.label}
+            </text>
           </g>
         ))}
 
@@ -158,18 +195,16 @@ export default function LineChart({
         ))}
 
         {markers.map((m) => (
-          <path
-            key={`m${m}`}
-            className="chart__dose"
-            d={`M${sx(m)},${M.top + innerH - 7}l4,7h-8z`}
-          />
+          <path key={`m${m}`} className="chart__dose" d={`M${sx(m)},${M.top + innerH - 7}l4,7h-8z`} />
         ))}
 
-        <path className={`chart__line chart__line--${tone}`} d={path} />
+        {series.map((s, i) => (
+          <path key={s.name} className={`chart__line chart__line--${s.tone}`} d={paths[i]} />
+        ))}
 
         {points.map((pt) => (
           <g key={pt.label}>
-            <circle className={`chart__point chart__point--${tone}`} cx={sx(pt.x)} cy={sy(pt.y)} r="4.5" />
+            <circle className={`chart__point chart__point--${pt.tone}`} cx={sx(pt.x)} cy={sy(pt.y)} r="4.5" />
             <text
               className="chart__note"
               x={sx(pt.x) + (pt.anchor === 'end' ? -8 : 8)}
@@ -181,10 +216,14 @@ export default function LineChart({
           </g>
         ))}
 
-        {active != null && Number.isFinite(ys[active]) && (
+        {active != null && (
           <g className="chart__cursor">
             <line x1={ax} x2={ax} y1={M.top} y2={M.top + innerH} />
-            <circle className={`chart__point chart__point--${tone}`} cx={ax} cy={sy(ys[active])} r="4.5" />
+            {series.map((s) =>
+              Number.isFinite(s.ys[active]) ? (
+                <circle key={s.name} className={`chart__point chart__point--${s.tone}`} cx={ax} cy={sy(s.ys[active], s.axis)} r="4.5" />
+              ) : null
+            )}
           </g>
         )}
 
@@ -210,11 +249,13 @@ export default function LineChart({
             top: M.top,
           }}
         >
-          <span className="chart__tooltip-value">
-            <span className={`chart__key chart__key--${tone}`} aria-hidden="true" />
-            {formatNumber(ys[active])} <span className="chart__tooltip-unit">{yUnit}</span>
-          </span>
-          <span className="chart__tooltip-meta">{yName} at {xName} {xFormat(xs[active])}</span>
+          {series.map((s) => (
+            <span key={s.name} className="chart__tooltip-value">
+              <span className={`chart__key chart__key--${s.tone}`} aria-hidden="true" />
+              {formatNumber(s.ys[active])} <span className="chart__tooltip-unit">{s.unit} {s.name.toLowerCase()}</span>
+            </span>
+          ))}
+          <span className="chart__tooltip-meta">at {xName} {xFormat(xs[active])}</span>
         </div>
       )}
     </div>
