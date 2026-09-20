@@ -19,5 +19,5 @@ export const SPREADSHEET = {
     'An educational interactive model simulating and visualizing blood concentrations of drugs and biomarkers over time. Enter the variables and see how concentrations in blood change.',
   href: '/downloads/little-pharmacologist.xlsx',
   page: '/pharmacologist',
-  fileLabel: 'Excel spreadsheet (.xlsx), 1.4 MB',
+  fileLabel: 'Excel spreadsheet (.xlsx), 1.2 MB',
 };
