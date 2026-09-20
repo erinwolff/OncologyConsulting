@@ -137,10 +137,13 @@ export default function Pharmacologist() {
   const drugSeries = { ys: sim.conc, tone: 'drug', name: 'Drug', unit: 'µg/L' };
   const markerSeries = { ys: sim.marker, tone: 'marker', name: 'Biomarker', unit: 'mg/L' };
   const effectBand = { y0: params.lowerLimit, y1: params.upperLimit, label: 'Effect range' };
-  const markerRefs = [
-    { y: params.baseline, label: 'Baseline' },
-    { y: params.maxEffect, label: 'Maximal drug effect' },
-  ];
+  // When both levels are the same the two labels would print on top of each other.
+  const markerRefs = params.baseline === params.maxEffect
+    ? [{ y: params.baseline, label: 'Baseline = maximal drug effect' }]
+    : [
+        { y: params.baseline, label: 'Baseline' },
+        { y: params.maxEffect, label: 'Maximal drug effect' },
+      ];
 
   const tableStep = hours <= 24 ? 1 : hours <= 72 ? 3 : hours <= 168 ? 6 : 24;
   const tableRows = [];
