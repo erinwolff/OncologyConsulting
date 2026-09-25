@@ -1,45 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { ChakraProvider } from '@chakra-ui/react'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, Navigate } from 'react-router';
+import { RouterProvider } from 'react-router/dom';
 
+import '@fontsource-variable/source-serif-4';
+import '@fontsource-variable/source-sans-3';
 import './index.css';
 
 import Root from './layout/Root.jsx';
 import Home from './features/Home.jsx';
 import Services from './features/Services.jsx';
-import Contact from './features/Contact.jsx';
-
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-import { extendTheme } from '@chakra-ui/react';
-import '@fontsource/pt-sans-caption';
-import '@fontsource/noto-sans';
-
-const theme = extendTheme({
-  fonts: {
-    heading: `'PT Sans Caption', sans-serif`,
-    body: `'Noto Sans', sans-serif`,
-  },
-})
+import NotFound from './features/NotFound.jsx';
+import Pharmacologist from './features/pharmacologist/Pharmacologist.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
     children: [
-      { path: '/', element: <Home /> },
-      { path: "/home", element: <Home /> },
-      { path: "/services", element: <Services /> },
-      { path: "/contact", element: <Contact /> },
+      { index: true, element: <Home /> },
+      // Keep old /home links working.
+      { path: 'home', element: <Navigate to="/" replace /> },
+      { path: 'services', element: <Services /> },
+      { path: 'pharmacologist', element: <Pharmacologist /> },
+      // The contact page was retired; send old links home.
+      { path: 'contact', element: <Navigate to="/" replace /> },
+      { path: '*', element: <NotFound /> },
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <RouterProvider router={router} />
-    </ChakraProvider>
-  </React.StrictMode>
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>
 );
-
